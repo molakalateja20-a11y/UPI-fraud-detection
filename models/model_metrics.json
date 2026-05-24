@@ -1,0 +1,56 @@
+{
+  "accuracy": 100.0,
+  "precision_fraud": 100.0,
+  "recall_fraud": 100.0,
+  "f1_score": 100.0,
+  "roc_auc": 1.0,
+  "confusion_matrix": [
+    [
+      950,
+      0
+    ],
+    [
+      0,
+      50
+    ]
+  ],
+  "feature_importance": {
+    "device_score": 0.2969,
+    "velocity": 0.24,
+    "risk_score": 0.1586,
+    "is_round_amount": 0.1026,
+    "amount_anomaly": 0.0657,
+    "amount": 0.0422,
+    "is_night": 0.0334,
+    "amount_log": 0.0286,
+    "hour": 0.0257,
+    "location_change": 0.0033,
+    "hour_cos": 0.0018,
+    "is_new_device": 0.0012,
+    "hour_sin": 0.0,
+    "location": 0.0,
+    "day_of_week": 0.0,
+    "transaction_type": 0.0
+  },
+  "n_estimators": 100,
+  "train_samples": 4000,
+  "test_samples": 1000,
+  "feature_columns": [
+    "transaction_type",
+    "location",
+    "amount",
+    "amount_log",
+    "amount_anomaly",
+    "hour",
+    "hour_sin",
+    "hour_cos",
+    "day_of_week",
+    "is_night",
+    "device_score",
+    "velocity",
+    "is_new_device",
+    "is_round_amount",
+    "location_change",
+    "risk_score"
+  ]
+}

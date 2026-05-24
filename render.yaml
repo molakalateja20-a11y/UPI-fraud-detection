@@ -1,0 +1,30 @@
+# Render Blueprint Specification for automated deployments
+# To deploy: 
+# 1. Push this folder to a GitHub repository.
+# 2. Go to Render.com -> Blueprints -> Connect repository.
+# 3. Render will spin up both the ML API and Dashboard automatically!
+
+services:
+  # ─── Flask REST API Backend ────────────────────────────────────────────────
+  - type: web
+    name: upi-fraud-api-backend
+    env: python
+    plan: free
+    # Compile step: installs packages, generates synthetic dataset, trains Random Forest model
+    buildCommand: pip install -r requirements.txt && python data_preparation.py && python train_model.py
+    # Production WSGI startup
+    startCommand: gunicorn api_server:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+
+  # ─── Streamlit Analytics Dashboard ─────────────────────────────────────────
+  - type: web
+    name: upi-fraud-streamlit-dashboard
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt && python data_preparation.py && python train_model.py
+    startCommand: python -m streamlit run dashboard.py --server.port $PORT --server.address 0.0.0.0
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
