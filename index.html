@@ -968,7 +968,7 @@ tbody td{padding:0.5rem 0.85rem;color:var(--text2)}
 
 <!-- MAIN APP LOGIC -->
 <script>
-const API_URL = "http://127.0.0.1:5000";
+const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' ? "http://127.0.0.1:5000" : "https://upi-fraud-api-backend.onrender.com";
 const PLT={displayModeBar:false,responsive:true};
 const DK={paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{family:'Inter',color:'#94a3b8',size:10}};
 const ST={total:0,fraud:0,saved:0,history:[],liveOn:false,liveTimer:null,liveRisk:{LOW:0,MEDIUM:0,HIGH:0},notifs:[],quizIdx:0,quizCorrect:0,quizWrong:0};
