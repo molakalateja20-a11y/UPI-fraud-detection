@@ -28,3 +28,6 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.10.0
+      - key: API_URL
+        value: https://upi-fraud-api-backend.onrender.com
+
